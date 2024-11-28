@@ -10,8 +10,8 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="ml-6 text-lg hover:text-[#f3a953] transition duration-300">
-        <NavLink to="/addcoffee" activeClassName="text-[#f3a953]">
-          Add Coffee
+        <NavLink to="/addproducts" activeClassName="text-[#f3a953]">
+          Add Products
         </NavLink>
       </li>
     </>
