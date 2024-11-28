@@ -1,7 +1,9 @@
+import BlogSection from "../components/BlogSection";
+
 const Home = () => {
     return (
         <div>
-            this is home
+           <BlogSection></BlogSection>
         </div>
     );
 };
