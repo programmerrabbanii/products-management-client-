@@ -13,13 +13,13 @@ const router=createBrowserRouter([
                 path:'/',
                 element:<Home></Home>,
                 loader:()=> fetch('http://localhost:5000/products')
-                
+
                 
             },
             {
                 path:'/addproducts',
                 element:<AddProducts></AddProducts>
-            }, 
+            },  
             {
                 path:'/products',
                 element:<Products></Products>,
