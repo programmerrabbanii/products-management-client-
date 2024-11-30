@@ -4,7 +4,7 @@ const FeaturesSection = () => {
   return (
     <div className="py-12 ">
       <div className="container  text-center w-11/12 mx-auto">
-        <h2 className="text-4xl font-bold mb-6 text-[#f3a953]">Why Choose Our Product?</h2>
+        <h2 className="text-4xl font-bold mb-6 text-[#f3a953]">Why Choose Our Product?.</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
