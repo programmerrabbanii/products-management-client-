@@ -15,35 +15,20 @@ const AddProducts = () => {
         const photo = e.target.photo.value;
     
         const allProducts = { name, manufacturer, supplier, price, category, description, photo };
-        console.log(allProducts);
-    
-        fetch('http://localhost:5000/products', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(allProducts)
+         
+        fetch('http://localhost:5000/products',{
+          method:"POST",
+          headers:{
+            'content-type' : 'application/json'
+          },
+          body:JSON.stringify(allProducts)
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'success',
-                        text: 'Product added successfully!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Something went wrong!',
-                    icon: 'error',
-                    confirmButtonText: 'Okay',
-                });
-            });
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data);
+        })
+    
+        
     };
     
     

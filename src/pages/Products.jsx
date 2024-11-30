@@ -4,8 +4,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { Link } from "react-router-dom";
 
 const Products = () => {
-  const produtc = useLoaderData();
-  console.log(produtc);
+ 
   const {name,photo,price,manufacturer,_id, supplier,category,description}=produtc
   
   const handleUpdateProducts = (e) => {
@@ -21,24 +20,7 @@ const Products = () => {
     const allProducts = { name, manufacturer, supplier, price, category, description, photo };
     console.log(allProducts);
 
-    fetch(`http://localhost:5000/products/${_id}`, {
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(allProducts)
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount > 0) { 
-                Swal.fire({
-                    title: 'success',
-                    text: 'Product updated successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                });
-            }
-        })
+    
         
 };
 

@@ -5,7 +5,7 @@ const Banner = () => {
     <div
       className="relative bg-cover bg-center text-white text-center py-36"
       style={{
-        backgroundImage: "url('https://i.ibb.co.com/xfBqcXZ/top-view-wooden-desk-with-black-friday-sticker-notepad.jpg')", // Replace with your image URL
+        backgroundImage: "url('https://i.ibb.co.com/5GwWVqb/patrick-tomasso-Oaqk7qq-Nh-c-unsplash.jpg')", 
       }} 
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
