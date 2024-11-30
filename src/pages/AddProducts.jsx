@@ -1,7 +1,53 @@
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 const AddProducts = () => {
-  return (
+    const handleAddProucts = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const manufacturer = e.target.manufacturer.value;
+        const supplier = e.target.supplier.value;
+        const price = e.target.price.value;
+        const category = e.target.category.value;
+        const description = e.target.description.value;
+        const photo = e.target.photo.value;
+    
+        const allProducts = { name, manufacturer, supplier, price, category, description, photo };
+        console.log(allProducts);
+    
+        fetch('http://localhost:5000/products', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(allProducts)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Product added successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something went wrong!',
+                    icon: 'error',
+                    confirmButtonText: 'Okay',
+                });
+            });
+    };
+    
+    
+  return ( 
     <div className="bg-[#f3f4f6] min-h-screen flex items-center justify-center py-12 px-4">
       <div className="bg-white shadow-xl rounded-lg w-full max-w-4xl p-10">
         {/* Back Button */}
@@ -26,7 +72,7 @@ const AddProducts = () => {
         </div>
 
         {/* Form */}
-        <form>
+        <form onSubmit={handleAddProucts}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Product Name */}
             <div>
@@ -34,6 +80,7 @@ const AddProducts = () => {
                 Product Name
               </label>
               <input
+                required
                 name="name"
                 type="text"
                 placeholder="Enter product name"
