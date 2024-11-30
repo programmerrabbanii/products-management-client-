@@ -4,43 +4,11 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-const ProductsCard = ({product,devices,setDevices}) => {
-    const {name,photo,price,manufacturer,_id}=product
+const ProductsCard = ({product,}) => {
+  const {name,manufacturer,supplier,price,category,description,photo,_id}=product
+    
 
-    const handleDlete=_id=>{
-        console.log(_id);
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-            
-            fetch(`http://localhost:5000/products/${_id}`,{
-                method:'DELETE'
-            })
-            .then(res=>res.json())
-            .then(data=>{
-                if(data.deletedCount >0){
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your Products has been deleted.",
-                        icon: "success"
-                      });
-                }
-                const remaing=devices.filter(cof=> cof._id !==_id);
-                setDevices(remaing)
-
-            })
-            } 
-          });
-
-
-    }
+   
     return (
         <div>
            

@@ -25,7 +25,15 @@ const AddProducts = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data);
+         if(data.acknowledged){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Product has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+         }
         })
     
         
