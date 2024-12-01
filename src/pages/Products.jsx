@@ -4,8 +4,9 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { Link } from "react-router-dom";
 
 const Products = () => {
+  const updatedData=useLoaderData()
  
-  const {name,photo,price,manufacturer,_id, supplier,category,description}=produtc
+  const {name,photo,price,manufacturer,_id, supplier,category,description}=updatedData
   
   const handleUpdateProducts = (e) => {
     e.preventDefault();
@@ -17,8 +18,30 @@ const Products = () => {
     const description = e.target.description.value;
     const photo = e.target.photo.value;
 
-    const allProducts = { name, manufacturer, supplier, price, category, description, photo };
+    const allProducts = { name, manufacturer, supplier, price, category, description, photo,_id };
     console.log(allProducts);
+
+    fetch(`http://localhost:5000/products/${_id}`,{
+      method:"PUT",
+      headers:{
+        'content-type' : 'application/json',
+      },
+      body:JSON.stringify(allProducts)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log('update user', data); 
+      if(data.modifiedCount>0){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your products has been Updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+      }
+    })
 
     
         
@@ -158,7 +181,7 @@ const Products = () => {
               type="submit"
               className="w-full py-3 bg-blue-600 text-white text-lg font-semibold rounded-md hover:bg-blue-700 transition"
             >
-              Add Product
+              Updated products
             </button>
           </form>
         </div>
