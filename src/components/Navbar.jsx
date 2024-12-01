@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logoNav from "../assets/images.jpeg";
 
 const Navbar = () => {
@@ -14,6 +14,11 @@ const Navbar = () => {
           Add Products
         </NavLink>
       </li>
+      {/* <li className="ml-6 text-lg hover:text-[#f3a953] transition duration-300">
+        <NavLink to="/register" activeClassName="text-[#f3a953]">
+          Register
+        </NavLink>
+      </li> */}
     </>
   );
 
@@ -64,7 +69,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <button className="btn btn-outline border-[#f3a953] text-[#f3a953] hover:bg-[#f3a953] hover:text-white transition duration-300">
-          Login
+         <Link to="/register"> Register</Link>
         </button>
       </div>
     </div>
